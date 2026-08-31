@@ -1,4 +1,5 @@
 # Windows-Performance-Investigation
+
 Hands-on Windows performance investigation using Task Manager, System Information, and Event Viewer to identify system bottlenecks, optimize startup performance, and document measurable results.
 
 ## Objective
@@ -8,6 +9,19 @@ The objective of this project was to investigate Windows 11 system performance u
 The investigation followed a structured troubleshooting methodology:
 
 **Observe → Investigate → Analyze → Resolve → Verify → Document**
+
+## Results at a Glance
+
+| Metric | Pre-Change | Post-Change |
+|---|---:|---:|
+| Average Boot Time | 26.855 seconds | 22.986 seconds |
+| Fastest Recorded Boot | 21.567 seconds | 20.336 seconds |
+| Samples Collected | 3 | 2 |
+| Startup Change | Microsoft Edge enabled | Microsoft Edge disabled |
+
+The collected measurements showed an approximately **14.4% lower average boot time** after the startup configuration change.
+
+Because boot times varied between tests and the sample size was small, the results suggest an improvement but do not establish that disabling Microsoft Edge alone caused the change.
 
 ## Environment
 
