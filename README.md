@@ -1,5 +1,5 @@
 # Windows-Performance-Investigation
-Hands-on Windows performance investigation using Task Manager, Resource Monitor, Event Viewer, and PowerShell to identify system bottlenecks and document root-cause analysis.
+Hands-on Windows performance investigation using Task Manager, System Information, and Event Viewer to identify system bottlenecks, optimize startup performance, and document measurable results.
 
 ## Objective
 
