@@ -15,7 +15,7 @@ The investigation followed a structured troubleshooting methodology:
 | Metric | Pre-Change | Post-Change |
 |---|---:|---:|
 | Average Boot Time | 26.855 seconds | 22.986 seconds |
-| Fastest Recorded Boot | 21.567 seconds | 20.336 seconds |
+| Lowest Recorded Boot Time | 21.567 seconds | 20.336 seconds |
 | Samples Collected | 3 | 2 |
 | Startup Change | Microsoft Edge enabled | Microsoft Edge disabled |
 
@@ -35,7 +35,7 @@ Because boot times varied between tests and the sample size was small, the resul
 | Processor | 12th Gen Intel Core i7-12700K |
 | Assigned Processors | 2 cores / 4 logical processors |
 | Installed RAM | 8 GB |
-| Total Physical Memory: | Approximately 3.18 GB |
+| Total Physical Memory | Approximately 3.18 GB |
 | Storage | 127 GB Microsoft Virtual Disk |
 | Disk Type | HDD (SAS) |
 | BIOS Mode | UEFI |
@@ -84,9 +84,9 @@ Microsoft 365 Copilot, Microsoft Teams, and Terminal were already disabled.
 
 This established the system's initial configuration before startup optimization was performed.
 
-## Baseline Boot Performance
+## Selected Pre-Change Boot Analysis
 
-Windows Event Viewer was used to obtain a measurable baseline for system startup performance.
+Windows Event Viewer was used to examine measurable system startup performance before making configuration changes.
 
 The following log was examined:
 
@@ -94,7 +94,7 @@ The following log was examined:
 
 Event ID **100 (Boot Performance Monitoring)** was reviewed because it records detailed information about the Windows startup process.
 
-### Baseline Results
+### Degraded Boot Sample
 
 | Metric | Baseline Result |
 |---|---:|
@@ -105,7 +105,7 @@ Event ID **100 (Boot Performance Monitoring)** was reviewed because it records d
 
 ### Analysis
 
-The baseline measurement showed that the system required approximately **37.007 seconds** to complete the measured startup process.
+One pre-change measurement showed that the system required approximately **37.007 seconds** to complete the measured startup process. Windows identified this particular Event ID 100 record as a degraded boot event.
 
 Of that time:
 
@@ -118,7 +118,7 @@ Rather than making multiple system changes at once, the next step was to examine
 
 ## Optimization Performed
 
-After reviewing the baseline performance data, the Startup Apps section of Task Manager was examined to identify applications that could be prevented from launching automatically without affecting essential Windows functionality.
+After reviewing the initial performance data, the Startup Apps section of Task Manager was examined to identify applications that could be prevented from launching automatically without affecting essential Windows functionality.
 
 Microsoft Edge (`msedge`) was enabled as a startup application. Because the browser did not need to launch automatically when Windows started, it was selected for the optimization test.
 
@@ -279,17 +279,12 @@ This project demonstrated practical Windows troubleshooting, performance analysi
 | Windows Event Log Analysis | Examined Diagnostics-Performance logs and Event ID 100 boot-performance data |
 | System Information Analysis | Verified operating system, hardware, memory, BIOS, Secure Boot, and virtual machine configuration |
 | Performance Baseline Development | Collected multiple pre-change boot measurements for comparison |
-| Root-Cause Analysis | Used system evidence to investigate potential contributors instead of assuming a cause |
+| Root-Cause Investigation | Used system evidence to investigate potential contributors instead of assuming a cause |
 | Controlled Troubleshooting | Modified one startup variable and retested system performance |
 | Performance Verification | Compared pre-change and post-change Event ID 100 measurements |
 | Data Interpretation | Calculated averages and evaluated variability between boot measurements |
 | Technical Documentation | Documented observations, methodology, changes, results, limitations, and lessons learned |
 
-### Troubleshooting Methodology
-
-The investigation followed a repeatable troubleshooting workflow:
-
-**Observe → Investigate → Analyze → Resolve → Verify → Document**
 
 ## Screenshots and Evidence
 
@@ -302,7 +297,7 @@ Screenshots were captured throughout the investigation to document the system en
 | Task Manager - Processes | Shows CPU, memory, disk, and network utilization during the initial assessment |
 | Task Manager - Startup Apps (Before) | Documents the startup configuration before the optimization |
 | System Information | Documents the Windows version, virtual machine configuration, processor, memory, BIOS mode, and Secure Boot status |
-| Event Viewer - Baseline | Shows Event ID 100 boot-performance measurements collected before the configuration change |
+| Event Viewer - Degraded Pre-Change Boot | Shows the 37.007-second Event ID 100 boot measurement recorded before the configuration change |
 | Task Manager - Startup Apps (After) | Shows Microsoft Edge disabled while the other selected startup applications remained unchanged |
 | Event Viewer - Post-Change | Shows Event ID 100 measurements collected after the configuration change |
 
@@ -336,7 +331,7 @@ System Information was used to document the Windows 11 virtual machine environme
 
 ![Windows System Information](screenshots/05-system-information.png)
 
-### Baseline Boot Measurement
+### Degraded Pre-Change Boot Measurement
 
 Event Viewer Event ID 100 recorded a 37.007-second boot measurement during one of the pre-change tests. Windows identified this particular boot as degraded.
 
