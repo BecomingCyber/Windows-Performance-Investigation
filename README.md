@@ -291,3 +291,51 @@ Screenshots were captured throughout the investigation to document the system en
 | Event Viewer - Baseline | Shows Event ID 100 boot-performance measurements collected before the configuration change |
 | Task Manager - Startup Apps (After) | Shows Microsoft Edge disabled while the other selected startup applications remained unchanged |
 | Event Viewer - Post-Change | Shows Event ID 100 measurements collected after the configuration change |
+
+### Memory Utilization
+
+Task Manager showed elevated memory utilization during the initial assessment. The system had 8 GB of installed RAM, while 4.6 GB was hardware reserved.
+
+![Task Manager memory utilization](screenshots/01-task-manager-memory.png)
+
+### Disk Activity
+
+Disk activity was minimal during the captured performance snapshot, indicating that the disk was not experiencing sustained utilization at the time of observation.
+
+![Task Manager disk activity](screenshots/02-task-manager-disk.png)
+
+### Process Resource Utilization
+
+The Processes view showed approximately 82% memory utilization while CPU, disk, and network activity remained low.
+
+![Task Manager process utilization](screenshots/03-task-manager-processes.png)
+
+### Startup Configuration Before Change
+
+Microsoft Edge (`msedge`), OneDrive, and SecurityHealthSystray were enabled as startup applications before the optimization.
+
+![Startup apps before optimization](screenshots/04-startup-apps-before.png)
+
+### System Information
+
+System Information was used to document the Windows 11 virtual machine environment and hardware configuration.
+
+![Windows System Information](screenshots/05-system-information.png)
+
+### Baseline Boot Measurement
+
+Event Viewer Event ID 100 recorded a 37.007-second boot measurement during one of the pre-change tests. Windows identified this particular boot as degraded.
+
+![Baseline Event Viewer boot measurement](screenshots/06-event-viewer-baseline.png)
+
+### Startup Configuration After Change
+
+Microsoft Edge (`msedge`) was disabled while the other selected startup settings remained unchanged.
+
+![Startup apps after optimization](screenshots/07-startup-apps-after.png)
+
+### Post-Change Boot Measurement
+
+After the startup configuration change, Event ID 100 recorded a 20.336-second boot measurement during the second post-change test.
+
+![Post-change Event Viewer boot measurement](screenshots/08-event-viewer-post-change.png)
